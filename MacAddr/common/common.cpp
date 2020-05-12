@@ -11,8 +11,21 @@
 #include <time.h>
 #include <sys/time.h>
 #include <unistd.h>
+#include <QApplication>
 
 
+
+void cm_ClipBoardSet(const QString &str)
+{
+    QClipboard *board = QApplication::clipboard();//使用 QApplication::clipboard() 函数获得系统剪贴板对象。这个函数的返回值是 QClipboard 指针。
+    board->setText(str); //通过 setText()，setImage() 或者 setPixmap() 函数可以将数据放置到剪贴板内，也就是通常所说的剪贴或者复制的操作；
+}
+
+QString cm_ClipBoardGet()
+{
+    QClipboard *board = QApplication::clipboard();
+    return board->text(); //使用text()，image() 或者 pixmap() 函数则可以从剪贴板获得数据，也就是粘贴
+}
 
 /***
   *判断一个字符串是否为纯数字
@@ -52,9 +65,9 @@ bool cm_isIPaddress(const QString& ip)
  */
 QString cm_ByteArrayToHexStr(const QByteArray &array)
 {
-    QString strArray = array.toHex(); // 十六进制
+    QString strArray = array.toHex().toUpper(); // 十六进制
     for(int i=0; i<array.size(); ++i)
-        strArray.insert(2+3*i, " "); // 插入空格
+        strArray.insert(2+3*i, ' '); // 插入空格
     return strArray;
 }
 

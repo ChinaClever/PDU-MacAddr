@@ -10,5 +10,7 @@ bool cm_isIPaddress(const QString& ip);
 QString cm_ByteArrayToHexStr(const QByteArray &array);
 QString cm_ByteArrayToUcharStr(const QByteArray &array);
 
+void cm_ClipBoardSet(const QString &str);
+QString cm_ClipBoardGet();
 
 #endif // COMMON_H
