@@ -3,11 +3,18 @@ include(smtplib/smtplib.pri)
 
 INCLUDEPATH += $$PWD
 
-HEADERS += 
+HEADERS +=  \
+    $$PWD/email.h \
+    $$PWD/email_setdlg.h \
+    $$PWD/emailthread.h
 	
-SOURCES += 
+SOURCES +=  \
+    $$PWD/email.cpp \
+    $$PWD/email_setdlg.cpp \
+    $$PWD/emailthread.cpp
 
 FORMS += \
+    $$PWD/email_setdlg.ui
 
 
 
