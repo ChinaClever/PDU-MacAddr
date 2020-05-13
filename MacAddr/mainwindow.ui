@@ -6,14 +6,35 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>1091</width>
     <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MAC地址生成器</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="barWid" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>1071</width>
+      <height>80</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWid">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>100</y>
+      <width>1071</width>
+      <height>481</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
  </widget>
  <resources/>
  <connections/>

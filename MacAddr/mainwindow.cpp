@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "macaddr.h"
+
 
 
 
@@ -10,15 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-
-
-    MacAddr *mac = MacAddr::bulid();
-    QString str = "2C-26-5F-30-A0-01";
-    qDebug() << mac->isMacAddress(str);
-    uint lzy = mac->macToInt(str) + 0xCC;
-    qDebug() << mac->intToMac(lzy);
-
-
+    mNavBarWid = new NavBarWid(ui->barWid);
+    QTimer::singleShot(5,this,SLOT(initFunSlot())); //延时初始化
+    connect(mNavBarWid, SIGNAL(navBarSig(int)), this, SLOT(navBarSlot(int)));
 
 }
 
@@ -27,3 +21,30 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::initFunSlot()
+{
+    initWid();
+}
+
+
+void MainWindow::initWid()
+{
+    mCreateMacWid = new CreateMacWid(ui->stackedWid);
+    ui->stackedWid->addWidget(mCreateMacWid);
+
+    mMacListWid = new CreateMacListWid(ui->stackedWid);
+    ui->stackedWid->addWidget(mMacListWid);
+
+    mSet = new SettingWid(ui->stackedWid);
+    ui->stackedWid->addWidget(mSet);
+
+}
+
+void MainWindow::navBarSlot(int id)
+{
+    mSet->refreshWid();
+    mMacListWid->refreshWid();
+    mCreateMacWid->refreshWid();
+    ui->stackedWid->setCurrentIndex(id);
+}

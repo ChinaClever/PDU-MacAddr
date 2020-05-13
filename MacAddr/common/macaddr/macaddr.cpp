@@ -2,7 +2,7 @@
 
 MacAddr::MacAddr()
 {
-    mPacket = sDataPacket::bulid();
+    mMacs = sDataPacket::bulid()->macs;
 }
 
 
@@ -18,7 +18,7 @@ MacAddr *MacAddr::bulid()
 uint MacAddr::macToInt(QString str)
 {
     bool ok;
-    str = str.replace(mPacket->ie.value, QString(""));
+    str = str.replace(MAC_ADDR_PREFIX, QString(""));
     str = str.replace(QString("-"), QString(""));
     uint ret = str.toUInt(&ok, 16);
     if(!ok) ret = 0;
@@ -42,10 +42,82 @@ QString MacAddr::intToMac(uint v)
 {
     QByteArray array = intToByte(v);
     QString str = cm_ByteArrayToHexStr(array);
-    QString mac = mPacket->ie.value + str.left(str.size()-1);
+    QString mac = MAC_ADDR_PREFIX + str.left(str.size()-1);
     return mac.replace(QString(" "), QString("-"));
 }
 
+uint MacAddr::macHasCounts(sMacUnit &unit)
+{
+    uint rtn = macToInt(unit.end);
+    unit.counts = rtn - macToInt(unit.mac);
+
+    return unit.counts;
+}
+
+
+uint MacAddr::macUsedCounts(sMacUnit &unit)
+{
+    uint rtn = macToInt(unit.start);
+    unit.used = macToInt(unit.mac)-rtn;
+
+    return unit.used;
+}
+
+bool MacAddr::createMac(sMacUnit &unit)
+{
+    bool ret = true;
+    unit.counts = macHasCounts(unit);
+    if(unit.counts > 0) {
+        unit.value = macToInt(unit.mac) + 1;
+        unit.mac = intToMac(unit.value);
+        unit.counts--;
+    } else {
+        ret = false;
+    }
+
+    return ret;
+}
+
+bool MacAddr::revokeMac(sMacUnit &unit)
+{
+    bool ret = true;
+    unit.used = macUsedCounts(unit);
+    if(unit.used > 0) {
+        unit.value = macToInt(unit.mac) - 1;
+        unit.mac = intToMac(unit.value);
+        unit.counts++;
+    } else {
+        ret = false;
+    }
+
+    return ret;
+}
+
+QList<sMacUnit> MacAddr::createMacList(sMacUnit &unit, int num)
+{
+    bool ret;
+    QList<sMacUnit> list;
+    for(int i=0; i<num; ++i) {
+        ret = createMac(unit);
+        if(ret) {
+            list << unit;
+        } else {
+            break;
+        }
+    }
+
+    return list;
+}
+
+bool MacAddr::revokeMacList(sMacUnit &it, QList<sMacUnit> &units)
+{
+    for(int i=units.size()-1; i>=0; --i) {
+        it = units.at(i);
+        revokeMac(it);
+    }
+
+    return true;
+}
 
 
 /**
