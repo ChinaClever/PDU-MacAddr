@@ -21,6 +21,7 @@ protected:
     bool inputCheck();
     void setWid(sMacUnit *unit);
     void saveLog();
+    void revokeLog();
 
 private slots:
     void on_typeBox_currentIndexChanged(int index);

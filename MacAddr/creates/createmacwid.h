@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "macaddr.h"
+#include "dbmacs.h"
 
 namespace Ui {
 class CreateMacWid;

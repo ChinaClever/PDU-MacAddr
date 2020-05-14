@@ -57,9 +57,28 @@ bool CreateMacListWid::inputCheck()
 
 void CreateMacListWid::saveLog()
 {
+    sMacItem item;
+    ConfigBase::bulid()->setMacUnit(mUnit);
+    item.dev = ui->typeBox->currentText();
+    item.user = ui->nameEdit->text();
+    item.sn = "---";
 
+    Db_Tran db;
+    for(int i=0; i<mList.size(); ++i) {
+        item.mac = mList.at(i).mac;
+        DbMacs::bulid()->insertItem(item);
+    }
+}
 
+void CreateMacListWid::revokeLog()
+{
+    Db_Tran db;
+    for(int i=0; i<mList.size(); ++i) {
+        QString mac = mList.at(i).mac;
+        DbMacs::bulid()->removeMac(mac);
+    }
 
+    mList.clear();
     ConfigBase::bulid()->setMacUnit(mUnit);
 }
 
@@ -87,13 +106,8 @@ void CreateMacListWid::on_revokeBtn_clicked()
         if(ret) {
             setWid(mUnit);
             mTableWid->clearRows();
-
-            ////////////
-            ///
-            ///  删除数据库纪录 以MAC 地址
-            ///
             ui->revokeBtn->setEnabled(false);
-            ConfigBase::bulid()->setMacUnit(mUnit);
+            revokeLog();
         }
     }
 }

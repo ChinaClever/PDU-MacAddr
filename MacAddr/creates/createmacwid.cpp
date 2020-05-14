@@ -64,10 +64,12 @@ bool CreateMacWid::inputCheck()
 
 void CreateMacWid::saveLog(sMacUnit *unit)
 {
-
-
-
-
+    sMacItem item;
+    item.dev = ui->typeBox->currentText();
+    item.user = ui->nameEdit->text();
+    item.sn = ui->snEdit->text();
+    item.mac = unit->mac;
+    DbMacs::bulid()->insertItem(item);
     ConfigBase::bulid()->setMacUnit(unit);
 }
 
@@ -93,12 +95,7 @@ void CreateMacWid::on_revokeBtn_clicked()
         bool ret = MacAddr::bulid()->revokeMac(*mUnit);
         if(ret) {
             setWid(mUnit);
-
-
-            ////////////
-            ///
-            ///  删除数据库纪录 以MAC 地址
-            ///
+            DbMacs::bulid()->removeMac(mac);
             ui->revokeBtn->setEnabled(false);
             ConfigBase::bulid()->setMacUnit(mUnit);
         }
