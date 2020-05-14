@@ -20,14 +20,14 @@ public:
 protected:
     bool inputCheck();
     void setWid(sMacUnit *unit);
-    void saveLog();
-    void revokeLog();
 
 private slots:
     void on_typeBox_currentIndexChanged(int index);
     void on_createBtn_clicked();
     void on_revokeBtn_clicked();
     void on_exportBtn_clicked();
+    void saveLogSlot();
+    void revokeLogSlot();
 
 private:
     Ui::CreateMacListWid *ui;

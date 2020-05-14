@@ -301,7 +301,7 @@ QSqlDatabase BasicSql::initDb()
         db = QSqlDatabase::database(QString::number(value));
     } else {
         db = QSqlDatabase::addDatabase("QSQLITE", QString::number(value));
-        db.setDatabaseName(cm_pathOfData("test.db"));
+        db.setDatabaseName(cm_pathOfData("macaddrs.db"));
         if (!db.open()) { //打开数据库
             qDebug() << "init Db error !!!" << db.lastError().text();
         }

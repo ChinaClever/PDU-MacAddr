@@ -55,22 +55,22 @@ bool CreateMacListWid::inputCheck()
     return box.Exec();
 }
 
-void CreateMacListWid::saveLog()
+void CreateMacListWid::saveLogSlot()
 {
     sMacItem item;
     ConfigBase::bulid()->setMacUnit(mUnit);
     item.dev = ui->typeBox->currentText();
     item.user = ui->nameEdit->text();
-    item.sn = "---";
 
     Db_Tran db;
     for(int i=0; i<mList.size(); ++i) {
+        item.sn = QString::number(i+1);
         item.mac = mList.at(i).mac;
         DbMacs::bulid()->insertItem(item);
     }
 }
 
-void CreateMacListWid::revokeLog()
+void CreateMacListWid::revokeLogSlot()
 {
     Db_Tran db;
     for(int i=0; i<mList.size(); ++i) {
@@ -90,9 +90,10 @@ void CreateMacListWid::on_createBtn_clicked()
     mList = MacAddr::bulid()->createMacList(*mUnit, num);
     if(mList.size()) {
         setWid(mUnit);
-        saveLog();
         mTableWid->setData(mList);
         ui->revokeBtn->setEnabled(true);
+        QTimer::singleShot(rand()%200,this,SLOT(saveLogSlot()));
+        InfoMsgBox box(this, tr("MAC地址已生成！"));
     } else {
         CriticalMsgBox box(this, tr("创建失败"));
     }
@@ -107,7 +108,8 @@ void CreateMacListWid::on_revokeBtn_clicked()
             setWid(mUnit);
             mTableWid->clearRows();
             ui->revokeBtn->setEnabled(false);
-            revokeLog();
+            QTimer::singleShot(rand()%150,this,SLOT(revokeLog()));
+            InfoMsgBox box(this, tr("MAC地址已撤销！"));
         }
     }
 }
@@ -126,6 +128,7 @@ void CreateMacListWid::on_exportBtn_clicked()
         QString str = ui->nameEdit->text();
         QString fn = str + "_" + ui->typeBox->currentText();
         dlg.init(fn, list);
+        dlg.exec();
 
     } else {
         CriticalMsgBox box(this, tr("没有数据无法导出！\n"));

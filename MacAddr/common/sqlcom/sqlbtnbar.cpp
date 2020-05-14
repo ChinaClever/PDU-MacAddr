@@ -50,6 +50,14 @@ void SqlBtnBar::setNoEdit()
     ui->importBtn->setHidden(true);
 }
 
+void SqlBtnBar::setEdit()
+{
+    ui->addBtn->setVisible(true);
+    ui->modifyBtn->setVisible(true);
+    ui->delBtn->setVisible(true);
+    ui->importBtn->setVisible(true);
+}
+
 void SqlBtnBar::on_refreshBtn_clicked()
 {
     emit refreshSig();

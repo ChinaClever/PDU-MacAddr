@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>430</width>
+    <width>463</width>
     <height>150</height>
    </rect>
   </property>
@@ -43,7 +43,7 @@
        <widget class="QDateEdit" name="startDateEdit">
         <property name="minimumSize">
          <size>
-          <width>140</width>
+          <width>160</width>
           <height>0</height>
          </size>
         </property>
@@ -104,7 +104,7 @@
        <widget class="QDateEdit" name="endDateEdit">
         <property name="minimumSize">
          <size>
-          <width>120</width>
+          <width>160</width>
           <height>0</height>
          </size>
         </property>

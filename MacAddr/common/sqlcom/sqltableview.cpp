@@ -15,6 +15,10 @@ SqlTableView::SqlTableView(QWidget *parent) : QWidget(parent)
     tableView->resizeColumnsToContents();
     tableView->horizontalHeader()->setStretchLastSection(true);
 
+//    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);//设置选中模式为选中行
+//        ui->tableView->setSelectionMode( QAbstractItemView::SingleSelection);//设置选中单个
+
+
     mDb = nullptr;
     QGridLayout *gridLayout = new QGridLayout(parent);
     gridLayout->setContentsMargins(0, 0, 0, 0);

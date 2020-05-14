@@ -16,6 +16,7 @@ public:
     ~SqlBtnBar();
 
     void gridLayout(QWidget *parent);
+    void setEdit();
     void setNoEdit();
     void clearHidden();
     void queryHidden();
