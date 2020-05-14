@@ -7,17 +7,13 @@
 
 SqlTableView::SqlTableView(QWidget *parent) : QWidget(parent)
 {
-    tableView = new QTableView(parent);
+    tableView = new QTableView(this);
     tableView->setSortingEnabled(true);
     tableView->setSelectionMode(QAbstractItemView::SingleSelection);
     tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
     tableView->setEditTriggers(QAbstractItemView::NoEditTriggers); //禁用编辑功能
     tableView->resizeColumnsToContents();
     tableView->horizontalHeader()->setStretchLastSection(true);
-
-//    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);//设置选中模式为选中行
-//        ui->tableView->setSelectionMode( QAbstractItemView::SingleSelection);//设置选中单个
-
 
     mDb = nullptr;
     QGridLayout *gridLayout = new QGridLayout(parent);
@@ -38,7 +34,6 @@ void SqlTableView::initTable(BasicSql *db)
 {
     model = new SqlTableModel(tableView, db->mDb);
     tableView->setModel(model->model);
-
     this->mDb = db;
     refreshSlot();
 }
@@ -113,7 +108,7 @@ bool SqlTableView::refreshTable(const QString &table)
 {
     bool ret = model->refreshTable(table);
     if(ret) {
-        tableView->sortByColumn(0, Qt::DescendingOrder); // 降序排列
+        tableView->sortByColumn(0, Qt::AscendingOrder); // 降序排列
         setColumnsHidden();
     }
     return  ret;

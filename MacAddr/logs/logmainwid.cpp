@@ -29,7 +29,3 @@ void LogMainWid::initFunSLot()
     ui->stackedWid->addWidget(mMacLog);
 }
 
-void LogMainWid::on_comboBox_currentIndexChanged(int index)
-{
-    ui->stackedWid->setCurrentIndex(index);
-}

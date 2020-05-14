@@ -19,7 +19,6 @@ protected slots:
     void initFunSLot();
 
 private slots:
-    void on_comboBox_currentIndexChanged(int index);
 
 private:
     Ui::LogMainWid *ui;
