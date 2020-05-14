@@ -58,6 +58,9 @@ bool CreateMacListWid::inputCheck()
 void CreateMacListWid::saveLog()
 {
 
+
+
+    ConfigBase::bulid()->setMacUnit(mUnit);
 }
 
 
@@ -90,6 +93,7 @@ void CreateMacListWid::on_revokeBtn_clicked()
             ///  删除数据库纪录 以MAC 地址
             ///
             ui->revokeBtn->setEnabled(false);
+            ConfigBase::bulid()->setMacUnit(mUnit);
         }
     }
 }

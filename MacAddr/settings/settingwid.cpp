@@ -101,9 +101,8 @@ bool SettingWid::inputCheck()
 
 void SettingWid::saveLog(sMacUnit *unit)
 {
-
-
     setWid(unit);
+    ConfigBase::bulid()->setMacUnit(unit);
 }
 
 void SettingWid::on_btn_clicked()

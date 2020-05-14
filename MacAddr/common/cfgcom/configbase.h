@@ -2,6 +2,7 @@
 #define CONFIGBASH
 #include "sysconfigfile.h"
 #include "serialport.h"
+#include "datapacket.h"
 
 struct sConfigItem
 {
@@ -19,6 +20,9 @@ public:
 
     QString getSerialName();
     void setSerialName(const QString &name);
+
+    void setMacUnit(sMacUnit *unit);
+    void getMacUnit(sMacUnit *unit);
 
     virtual QString getPrefix(){return "con";}
 };

@@ -17,7 +17,8 @@ static QSettings *pConfigIni = NULL;
   */
 QString cm_pathOfData(const QString& name)
 {
-    QDir dataDir(QDir::home());
+    //QDir dataDir(QDir::home());
+    QDir dataDir(QDir::current());
     QString dirName = ".macaddr";
     if(!dataDir.exists(dirName))
         dataDir.mkdir(dirName);
