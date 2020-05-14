@@ -30,7 +30,7 @@ void LogComWid::initWid(BasicSql *db, LogBtnBar *bar, SqlQueryBase *btn)
 {
     mDateWidget->setTable(db->tableName());
 
-    //LogBtnBar *bar = new LogBtnBar;
+    // LogBtnBar *bar = new LogBtnBar;
     bar->setDlg(btn);
     mSqlTableWid->initWid(db, bar);
 }

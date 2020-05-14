@@ -14,6 +14,9 @@ SqlTableView::SqlTableView(QWidget *parent) : QWidget(parent)
     tableView->setEditTriggers(QAbstractItemView::NoEditTriggers); //禁用编辑功能
     tableView->resizeColumnsToContents();
     tableView->horizontalHeader()->setStretchLastSection(true);
+    // tableView->setAlternatingRowColors(true);
+    // tableView->setStyleSheet("QTableView{ background-color: rgb(202, 232, 234); alternate-background-color: rgb(245, 245, 245); }");
+    // connect(tableView,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(doubleSlot(QModelIndex)));
 
     mDb = nullptr;
     QGridLayout *gridLayout = new QGridLayout(parent);
@@ -108,7 +111,7 @@ bool SqlTableView::refreshTable(const QString &table)
 {
     bool ret = model->refreshTable(table);
     if(ret) {
-        tableView->sortByColumn(0, Qt::AscendingOrder); // 降序排列
+        tableView->sortByColumn(0, Qt::DescendingOrder); // 降序排列
         setColumnsHidden();
     }
     return  ret;
@@ -169,6 +172,15 @@ void SqlTableView::delSlot(int)
     model->removeRow(curRow);
 }
 
+void SqlTableView::doubleSlot(QModelIndex)
+{
+    QString str = tr("是否删除这条纪录?");
+    QuMsgBox box(this, str);
+    bool ret = box.Exec();
+    if(ret) {
+        delSlot();
+    }
+}
 
 int SqlTableView::getList(QList<QStringList> &list)
 {

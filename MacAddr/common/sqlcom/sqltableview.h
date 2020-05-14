@@ -34,7 +34,8 @@ public slots:
     void clearTableSlot();
     void refreshSlot();
     void submitSlot();
-    void querySlot(const QString &);
+    void querySlot(const QString &);    
+    void doubleSlot(QModelIndex);
 
 protected slots:
     void autoDelSlot();

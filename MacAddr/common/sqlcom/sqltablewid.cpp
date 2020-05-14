@@ -29,8 +29,9 @@ void SqlTableWid::initWid(BasicSql *db, SqlBtnBar *btn)
     mBtnBar = btn;
     mTableTile = db->tableTile;
     btn->gridLayout(ui->btnWid);
+    btn->setParent(ui->btnWid);
 
-    mTableView = new SqlTableView(ui->viewWid);
+    mTableView = new SqlTableView(ui->wid);
     mTableView->initTable(db);
     initFunSLot();
 }
