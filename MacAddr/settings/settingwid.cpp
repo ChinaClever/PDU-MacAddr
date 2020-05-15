@@ -1,5 +1,6 @@
 #include "settingwid.h"
 #include "ui_settingwid.h"
+#include "readmedlg.h"
 
 SettingWid::SettingWid(QWidget *parent) :
     QWidget(parent),
@@ -125,4 +126,10 @@ void SettingWid::on_btn_clicked()
             CriticalMsgBox box(this, tr("身份验证错误\n"));
         }
     }
+}
+
+void SettingWid::on_readMeBtn_clicked()
+{
+    ReadMeDlg dlg(this);
+    dlg.exec();
 }

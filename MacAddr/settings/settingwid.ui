@@ -312,6 +312,19 @@
        <string>修改</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="readMeBtn">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>420</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>说明</string>
+      </property>
+     </widget>
     </widget>
    </item>
   </layout>

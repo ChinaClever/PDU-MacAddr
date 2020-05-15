@@ -28,6 +28,8 @@ private slots:
     void on_typeBox_currentIndexChanged(int index);
     void on_btn_clicked();
 
+    void on_readMeBtn_clicked();
+
 private:
     Ui::SettingWid *ui;
     sMacUnit *mUnit;
