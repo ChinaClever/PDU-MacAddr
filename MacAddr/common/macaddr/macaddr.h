@@ -27,7 +27,7 @@ protected:
     QByteArray get_mac_array_from_QString(const QString &in);
 
 private:
-    sMacAddrs *mMacs;
+    sMacUnit *mMac;
 };
 
 #endif // MACADDR_H

@@ -2,7 +2,7 @@
 
 MacAddr::MacAddr()
 {
-    mMacs = sDataPacket::bulid()->macs;
+    mMac = sDataPacket::bulid()->mac;
 }
 
 
@@ -19,7 +19,7 @@ uint MacAddr::macToInt(QString str)
 {
     bool ok;
     str = str.replace(MAC_ADDR_PREFIX, QString(""));
-    str = str.replace(QString("-"), QString(""));
+    str = str.replace(QString(":"), QString(""));
     uint ret = str.toUInt(&ok, 16);
     if(!ok) ret = 0;
 
@@ -43,7 +43,7 @@ QString MacAddr::intToMac(uint v)
     QByteArray array = intToByte(v);
     QString str = cm_ByteArrayToHexStr(array);
     QString mac = MAC_ADDR_PREFIX + str.left(str.size()-1);
-    return mac.replace(QString(" "), QString("-"));
+    return mac.replace(QString(" "), QString(":"));
 }
 
 uint MacAddr::macHasCounts(sMacUnit &unit)
@@ -151,6 +151,7 @@ QByteArray MacAddr::get_mac_array_from_QString(const QString &in)
 
 bool MacAddr::isMacAddress(QString mac)
 {
+    mac = mac.replace(QString(":"), QString("-"));
     QRegExp rx("^([A-Fa-f0-9]{2}[-,:]){5}[A-Fa-f0-9]{2}$");
     QRegExpValidator v(rx, 0);
     int pos = 0;

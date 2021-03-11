@@ -10,7 +10,7 @@ void MacsTableWid::initWid()
 {
     QString title = tr("MAC地址列表");
     QStringList header;
-    header<<tr("编号") << tr("MAC地址");
+    header << tr("MAC地址");
     initTableWid(header, 0, title);
 }
 
@@ -18,7 +18,7 @@ void MacsTableWid::initWid()
 void MacsTableWid::appendItem(int id, const sMacUnit &unit)
 {
     QStringList listStr;
-    listStr << QString::number(id+1);
+    //listStr << QString::number(id+1);
     listStr << unit.mac;
     setTableRow(id, listStr);
 }

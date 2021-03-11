@@ -1,6 +1,7 @@
 #include "navbarwid.h"
 #include "ui_navbarwid.h"
 #include "backcolourcom.h"
+#include <QGridLayout>
 
 NavBarWid::NavBarWid(QWidget *parent) :
     QWidget(parent),
@@ -8,7 +9,9 @@ NavBarWid::NavBarWid(QWidget *parent) :
 {
     ui->setupUi(this);
     set_background_icon(this,":/image/title_back.jpg");
-
+    QGridLayout *gridLayout = new QGridLayout(parent);
+    gridLayout->setContentsMargins(0, 0, 0, 6);
+    gridLayout->addWidget(this);
 }
 
 NavBarWid::~NavBarWid()

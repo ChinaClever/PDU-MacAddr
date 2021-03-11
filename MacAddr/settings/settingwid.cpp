@@ -17,10 +17,6 @@ SettingWid::~SettingWid()
 
 void SettingWid::initWid()
 {
-    sMacUnit unit = sDataPacket::bulid()->macs->IEEE;
-    ui->ieStartEdit->setText(unit.start);
-    ui->ieEndEdit->setText(unit.end);
-
     groupBox_background_icon(this);
     on_typeBox_currentIndexChanged(0);
     ui->groupBox->setEnabled(false);
@@ -41,17 +37,10 @@ void SettingWid::setWid(sMacUnit *unit)
 }
 
 
-void SettingWid::on_typeBox_currentIndexChanged(int index)
+void SettingWid::on_typeBox_currentIndexChanged(int)
 {
-    sMacUnit *unit = nullptr;
-    sMacAddrs *macs = sDataPacket::bulid()->macs;
-    switch (index) {
-    case 0:  unit = &(macs->IP); break;
-    case 1:  unit = &(macs->MPDU); break;
-    case 2:  unit = &(macs->RPDU); break;
-    case 3:  unit = &(macs->ZPDU); break;
-    case 4:  unit = &(macs->ATS); break;
-    }
+    sMacUnit *unit = sDataPacket::bulid()->mac;
+    unit->name = ui->typeBox->currentText();
     setWid(unit);
     mUnit = unit;
 }
@@ -59,7 +48,7 @@ void SettingWid::on_typeBox_currentIndexChanged(int index)
 bool SettingWid::authorityVerification()
 {
     bool ok, ret = false;
-    QString text = QInputDialog::getText(this,tr("口令验证"),tr("请输入管理员密码"), QLineEdit::Normal,NULL,&ok);
+    QString text = QInputDialog::getText(this,tr("口令验证"),tr("请输入管理员密码"), QLineEdit::Password,NULL,&ok);
     if(ok && !text.isEmpty()) {
         if(text == "123456") ret = true;
     }

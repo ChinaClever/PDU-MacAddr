@@ -28,15 +28,9 @@ void CreateMacListWid::setWid(sMacUnit *unit)
 
 void CreateMacListWid::on_typeBox_currentIndexChanged(int index)
 {
-    sMacUnit *unit = nullptr;
-    sMacAddrs *macs = sDataPacket::bulid()->macs;
-    switch (index) {
-    case 0:  unit = &(macs->IP); break;
-    case 1:  unit = &(macs->MPDU); break;
-    case 2:  unit = &(macs->RPDU); break;
-    case 3:  unit = &(macs->ZPDU); break;
-    case 4:  unit = &(macs->ATS); break;
-    }
+    sMacUnit *unit = sDataPacket::bulid()->mac;
+    unit->name = ui->typeBox->currentText();
+    unit->id = index;
     mUnit = unit;
     setWid(unit);
     mList.clear();
@@ -64,7 +58,7 @@ void CreateMacListWid::saveLogSlot()
 
     Db_Tran db;
     for(int i=0; i<mList.size(); ++i) {
-        item.sn = QString::number(i+1);
+        //item.sn = QString::number(i+1);
         item.mac = mList.at(i).mac;
         DbMacs::bulid()->insertItem(item);
     }
@@ -93,7 +87,7 @@ void CreateMacListWid::on_createBtn_clicked()
         mTableWid->setData(mList);
         ui->revokeBtn->setEnabled(true);
         QTimer::singleShot(rand()%200,this,SLOT(saveLogSlot()));
-        InfoMsgBox box(this, tr("MAC地址已生成！"));
+        //InfoMsgBox box(this, tr("MAC地址已生成！"));
     } else {
         CriticalMsgBox box(this, tr("创建失败"));
     }

@@ -25,10 +25,9 @@ protected:
     bool authorityVerification();
 
 private slots:
-    void on_typeBox_currentIndexChanged(int index);
-    void on_btn_clicked();
-
+    void on_typeBox_currentIndexChanged(int);
     void on_readMeBtn_clicked();
+    void on_btn_clicked();
 
 private:
     Ui::SettingWid *ui;

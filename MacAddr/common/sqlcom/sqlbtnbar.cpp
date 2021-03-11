@@ -67,7 +67,7 @@ void SqlBtnBar::on_refreshBtn_clicked()
 bool SqlBtnBar::checkJur()
 {
     bool ok, ret = false;
-    QString text = QInputDialog::getText(this,tr("口令验证"),tr("请输入管理员密码"), QLineEdit::Normal,NULL,&ok);
+    QString text = QInputDialog::getText(this,tr("口令验证"),tr("请输入管理员密码"), QLineEdit::Password,NULL,&ok);
     if(ok && !text.isEmpty()) {
         if(text == "123456") ret = true;
     }

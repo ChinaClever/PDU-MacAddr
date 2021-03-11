@@ -7,8 +7,8 @@
 
 Log_MacBtnBar::Log_MacBtnBar(QWidget *parent) : LogBtnBar(parent)
 {
-    setEdit();
-    importHidden();
+//    setEdit();
+//    importHidden();
 }
 
 void Log_MacBtnBar::addBtn()

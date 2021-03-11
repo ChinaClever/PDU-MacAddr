@@ -28,15 +28,9 @@ void CreateMacWid::setWid(sMacUnit *unit)
 
 void CreateMacWid::on_typeBox_currentIndexChanged(int index)
 {
-    sMacUnit *unit = nullptr;
-    sMacAddrs *macs = sDataPacket::bulid()->macs;
-    switch (index) {
-    case 0:  unit = &(macs->IP); break;
-    case 1:  unit = &(macs->MPDU); break;
-    case 2:  unit = &(macs->RPDU); break;
-    case 3:  unit = &(macs->ZPDU); break;
-    case 4:  unit = &(macs->ATS); break;
-    }
+    sMacUnit *unit = sDataPacket::bulid()->mac;
+    unit->name = ui->typeBox->currentText();
+    unit->id = index;
     setWid(unit);
     mUnit = unit;
     ui->revokeBtn->setEnabled(false);

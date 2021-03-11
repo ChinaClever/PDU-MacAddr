@@ -3,7 +3,7 @@
 #include <QtCore>
 #include <QColor>
 
-#define MAC_ADDR_PREFIX "2C-26-5F-"
+#define MAC_ADDR_PREFIX "2C:26:5F:"
 
 struct sMacUnit
 {
@@ -24,17 +24,6 @@ struct sMacUnit
 };
 
 
-struct sMacAddrs
-{
-    sMacAddrs() {}
-
-    sMacUnit IEEE;
-    sMacUnit IP;
-    sMacUnit MPDU;
-    sMacUnit ZPDU;
-    sMacUnit RPDU;
-    sMacUnit ATS;
-};
 
 /**
  * 数据包
@@ -44,16 +33,10 @@ class sDataPacket
     sDataPacket();
 public:
     static sDataPacket *bulid();
-    sMacAddrs  *macs;
+    sMacUnit *mac;
 
 protected:
-    void initData();
-    void initIEEE();
-    void initIp();
-    void initMpdu();
-    void initRpdu();
-    void initZpdu();
-    void initAts();
+      void initMac();
 };
 
 

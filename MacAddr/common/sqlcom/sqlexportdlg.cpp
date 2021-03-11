@@ -30,7 +30,7 @@ SqlExportDlg::~SqlExportDlg()
 void SqlExportDlg::init(const QString &title, QList<QStringList> &list)
 {
     mList = list;
-    QString fn = title + tr("导出");
+    QString fn = title + "_MAC";
 
     ui->progressBar->setValue(0);
     ui->titleLab->setText(fn);

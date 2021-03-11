@@ -8,8 +8,8 @@
 
 sDataPacket::sDataPacket()
 {
-    macs = new sMacAddrs;
-    initData();
+    mac = new sMacUnit;
+    initMac();
 }
 
 sDataPacket *sDataPacket::bulid()
@@ -20,78 +20,14 @@ sDataPacket *sDataPacket::bulid()
     return sington;
 }
 
-void sDataPacket::initData()
-{
-    initIEEE();
-    initIp();
-    initMpdu();
-    initRpdu();
-    initZpdu();
-    initAts();
-}
 
-void sDataPacket::initIEEE()
+void sDataPacket::initMac()
 {
-    sMacUnit *unit = &(macs->IEEE);
-    unit->id = 99;
-    unit->name = "IEEE";
-    unit->start += "30-00-00";
-    unit->end += "3F-FF-FF";
-    ConfigBase::bulid()->getMacUnit(unit);
-}
-
-void sDataPacket::initIp()
-{
-    sMacUnit *unit = &(macs->IP);
+    sMacUnit *unit = mac;
     unit->id = 0;
-    unit->name = "IP";
-    unit->start += "31-00-00";
-    unit->mac += "31-00-01";
-    unit->end += "32-FF-FF";
-    ConfigBase::bulid()->getMacUnit(unit);
-}
-
-void sDataPacket::initMpdu()
-{
-    sMacUnit *unit = &(macs->MPDU);
-    unit->id = 1;
-    unit->name = "MPDU";
-    unit->start += "33-00-00";
-    unit->mac += "33-00-01";
-    unit->end += "34-FF-FF";
-    ConfigBase::bulid()->getMacUnit(unit);
-}
-
-void sDataPacket::initRpdu()
-{
-    sMacUnit *unit = &(macs->RPDU);
-    unit->id = 2;
-    unit->name = "RPDU";
-    unit->start += "37-00-00";
-    unit->mac += "37-00-01";
-    unit->end += "38-FF-FF";
-    ConfigBase::bulid()->getMacUnit(unit);
-}
-
-
-void sDataPacket::initZpdu()
-{
-    sMacUnit *unit = &(macs->ZPDU);
-    unit->id = 3;
-    unit->name = "ZPDU";
-    unit->start += "35-00-00";
-    unit->mac += "35-00-01";
-    unit->end += "36-FF-FF";
-    ConfigBase::bulid()->getMacUnit(unit);
-}
-
-void sDataPacket::initAts()
-{
-    sMacUnit *unit = &(macs->ATS);
-    unit->id = 4;
-    unit->name = "ATS";
-    unit->start += "30-00-00";
-    unit->mac += "30-00-01";
-    unit->end += "30-FF-FF";
+    unit->name = "IP-PDU";
+    unit->start += "30:00:00";
+    unit->mac += "30:00:00";
+    unit->end += "3F:FF:FF";
     ConfigBase::bulid()->getMacUnit(unit);
 }
