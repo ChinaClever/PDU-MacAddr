@@ -47,13 +47,13 @@ void ConfigBase::setSerialName(const QString &name)
 void ConfigBase::setMacUnit(sMacUnit *unit)
 {
     QString prefix = getPrefix();
-    QString str = QString("%1_mac").arg(prefix);
+    QString str = QString("mac");
     com_cfg_write(str, unit->mac, prefix);
 
-    str = QString("%1_start").arg(prefix);
+    str = QString("start");
     com_cfg_write(str, unit->start, prefix);
 
-    str = QString("%1_end").arg(prefix);
+    str = QString("end");
     com_cfg_write(str, unit->end, prefix);
 }
 
@@ -61,15 +61,15 @@ void ConfigBase::setMacUnit(sMacUnit *unit)
 void ConfigBase::getMacUnit(sMacUnit *unit)
 {
     QString prefix = getPrefix();
-    QString str = QString("%1_mac").arg(prefix);
+    QString str = QString("mac");
     QString res = com_cfg_readStr(str, prefix);
     if(!res.isEmpty()) unit->mac = res;
 
-    str = QString("%1_start").arg(prefix);
+    str = QString("start");
     res = com_cfg_readStr(str, prefix);
     if(!res.isEmpty()) unit->start = res;
 
-    str = QString("%1_end").arg(prefix);
+    str = QString("end");
     res = com_cfg_readStr(str, prefix);
     if(!res.isEmpty()) unit->end = res;    
 }

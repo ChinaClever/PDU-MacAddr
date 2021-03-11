@@ -24,7 +24,7 @@ public:
     void setMacUnit(sMacUnit *unit);
     void getMacUnit(sMacUnit *unit);
 
-    virtual QString getPrefix(){return "con";}
+    virtual QString getPrefix(){return "Mac";}
 };
 
 #endif // CONFIGBASH
