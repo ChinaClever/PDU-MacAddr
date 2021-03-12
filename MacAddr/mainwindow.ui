@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MAC地址生成器</string>
+   <string>MAC地址生成器V0.1</string>
   </property>
   <property name="windowIcon">
    <iconset resource="images/image.qrc">
