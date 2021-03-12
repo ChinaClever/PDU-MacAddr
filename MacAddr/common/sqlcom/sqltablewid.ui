@@ -27,7 +27,14 @@
     <number>0</number>
    </property>
    <item row="0" column="0">
-    <widget class="QWidget" name="wid" native="true"/>
+    <widget class="QWidget" name="wid" native="true">
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+    </widget>
    </item>
    <item row="1" column="0">
     <widget class="QWidget" name="btnWid" native="true">
