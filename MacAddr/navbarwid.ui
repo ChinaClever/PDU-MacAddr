@@ -71,7 +71,7 @@ font: 20pt &quot;微软雅黑&quot;;</string>
       </size>
      </property>
      <property name="text">
-      <string>MAC地址</string>
+      <string>批量创建</string>
      </property>
     </widget>
    </item>
@@ -84,7 +84,7 @@ font: 20pt &quot;微软雅黑&quot;;</string>
       </size>
      </property>
      <property name="text">
-      <string>批量生成</string>
+      <string>MAC生成</string>
      </property>
     </widget>
    </item>

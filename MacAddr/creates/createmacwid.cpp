@@ -14,6 +14,7 @@ CreateMacWid::CreateMacWid(QWidget *parent) :
     groupBox_background_icon(this);
     on_typeBox_currentIndexChanged(0);
     ui->revokeBtn->setEnabled(false);
+    ui->revokeBtn->setHidden(true);
 }
 
 CreateMacWid::~CreateMacWid()
