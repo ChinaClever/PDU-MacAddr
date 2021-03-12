@@ -33,6 +33,7 @@ protected slots:
 private:
     Ui::SqlExportDlg *ui;
     QTimer *timer;
+    QString mDir;
     QList<QStringList> mList;
     Excel_SaveThread *mExportThread;
 };

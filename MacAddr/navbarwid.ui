@@ -45,7 +45,7 @@
 font: 20pt &quot;微软雅黑&quot;;</string>
      </property>
      <property name="text">
-      <string>MAC地址管理平台</string>
+      <string>MAC地址创建工具</string>
      </property>
     </widget>
    </item>

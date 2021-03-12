@@ -29,5 +29,7 @@ void sDataPacket::initMac()
     unit->start += "30:00:00";
     unit->mac += "30:00:00";
     unit->end += "3F:FF:FF";
+    unit->pwd = "123456";
+    unit->dir = "D:";
     ConfigBase::bulid()->getMacUnit(unit);
 }

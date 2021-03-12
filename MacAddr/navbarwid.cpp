@@ -17,6 +17,7 @@ NavBarWid::NavBarWid(QWidget *parent) :
     QGridLayout *gridLayout = new QGridLayout(parent);
     gridLayout->setContentsMargins(0, 0, 0, 6);
     gridLayout->addWidget(this);
+    ui->macBtn->setHidden(true);
 }
 
 NavBarWid::~NavBarWid()

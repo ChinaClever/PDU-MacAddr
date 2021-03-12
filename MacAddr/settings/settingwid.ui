@@ -24,7 +24,7 @@
     <number>0</number>
    </property>
    <item row="0" column="0">
-    <widget class="QGroupBox" name="groupBox_2">
+    <widget class="QGroupBox" name="groupBox">
      <property name="font">
       <font>
        <family>微软雅黑</family>
@@ -87,7 +87,7 @@
        </spacer>
       </item>
       <item row="1" column="0" colspan="5">
-       <widget class="QGroupBox" name="groupBox">
+       <widget class="QGroupBox" name="groupBox_2">
         <property name="maximumSize">
          <size>
           <width>16777215</width>
@@ -95,7 +95,7 @@
          </size>
         </property>
         <property name="title">
-         <string>设备MAC地址范围设置</string>
+         <string>MAC地址范围</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_4">
          <item row="0" column="0">
@@ -291,7 +291,7 @@
        </spacer>
       </item>
       <item row="0" column="0" colspan="5">
-       <widget class="QGroupBox" name="ieGroup">
+       <widget class="QGroupBox" name="groupBox_1">
         <property name="maximumSize">
          <size>
           <width>16777215</width>
@@ -299,7 +299,7 @@
          </size>
         </property>
         <property name="title">
-         <string>IEEE授权范围</string>
+         <string>授权设置</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_3">
          <item row="0" column="0">
@@ -311,7 +311,7 @@
             </size>
            </property>
            <property name="text">
-            <string>起始地址：</string>
+            <string>授权密码：</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -319,9 +319,9 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="ieStartEdit">
+          <widget class="QLineEdit" name="pwdEdit">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="maximumSize">
             <size>
@@ -330,7 +330,10 @@
             </size>
            </property>
            <property name="text">
-            <string>2C-26-5F-30-00-00</string>
+            <string>123456</string>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
            </property>
           </widget>
          </item>
@@ -343,7 +346,7 @@
             </size>
            </property>
            <property name="text">
-            <string>结束地址：</string>
+            <string>密码确认：</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -351,9 +354,9 @@
           </widget>
          </item>
          <item row="0" column="3">
-          <widget class="QLineEdit" name="ieEndEdit">
+          <widget class="QLineEdit" name="passwordEdit">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="maximumSize">
             <size>
@@ -362,7 +365,10 @@
             </size>
            </property>
            <property name="text">
-            <string>2C-26-5F-3F-FF-FF </string>
+            <string>123456</string>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
            </property>
           </widget>
          </item>

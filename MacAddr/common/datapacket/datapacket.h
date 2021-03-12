@@ -21,6 +21,9 @@ struct sMacUnit
     uint value;
     uint counts;
     uint used;
+
+    QString pwd;
+    QString dir;
 };
 
 

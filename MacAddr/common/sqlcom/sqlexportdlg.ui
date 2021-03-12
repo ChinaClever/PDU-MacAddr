@@ -141,10 +141,10 @@
   <widget class="QPushButton" name="exportBtn">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>240</x>
      <y>230</y>
      <width>141</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="font">

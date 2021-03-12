@@ -5,6 +5,7 @@
  */
 #include "sqlbtnbar.h"
 #include "ui_sqlbtnbar.h"
+#include "datapacket.h"
 extern bool usr_land_jur();
 
 SqlBtnBar::SqlBtnBar(QWidget *parent) :
@@ -69,7 +70,8 @@ bool SqlBtnBar::checkJur()
     bool ok, ret = false;
     QString text = QInputDialog::getText(this,tr("口令验证"),tr("请输入管理员密码"), QLineEdit::Password,NULL,&ok);
     if(ok && !text.isEmpty()) {
-        if(text == "123456") ret = true;
+        QString pwd = sDataPacket::bulid()->mac->pwd;
+        if(text == pwd) ret = true;
     }
 
     if(!ret) {

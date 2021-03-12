@@ -28,16 +28,16 @@ MainWindow::~MainWindow()
 void MainWindow::initFunSlot()
 {
     initWid();
+    navBarSlot(1);
 }
-
 
 void MainWindow::initWid()
 {
+     mCreateMacWid = new CreateMacWid(ui->stackedWid);
+     ui->stackedWid->addWidget(mCreateMacWid);
+
     mMacListWid = new CreateMacListWid(ui->stackedWid);
     ui->stackedWid->addWidget(mMacListWid);
-
-    mCreateMacWid = new CreateMacWid(ui->stackedWid);
-    ui->stackedWid->addWidget(mCreateMacWid);
 
     mSet = new SettingWid(ui->stackedWid);
     ui->stackedWid->addWidget(mSet);
