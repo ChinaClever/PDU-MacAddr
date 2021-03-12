@@ -25,6 +25,7 @@ CreateMacListWid::~CreateMacListWid()
 
 void CreateMacListWid::setWid(sMacUnit *unit)
 {
+    ui->macEdit->setText(unit->mac);
     ui->startEdit->setText(unit->start);
     ui->endEdit->setText(unit->end);
     MacAddr::bulid()->macHasCounts(*unit);
