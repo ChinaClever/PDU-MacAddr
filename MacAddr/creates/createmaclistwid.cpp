@@ -16,6 +16,8 @@ CreateMacListWid::CreateMacListWid(QWidget *parent) :
     on_typeBox_currentIndexChanged(0);
     ui->revokeBtn->setEnabled(false);
     mTableWid = new MacsTableWid(ui->widget);
+    ui->revokeBtn->setHidden(true);
+    ui->exportBtn->setHidden(true);
 }
 
 CreateMacListWid::~CreateMacListWid()
@@ -51,6 +53,12 @@ bool CreateMacListWid::inputCheck()
         return false;
     }
 
+    int num = ui->spinBox->value();
+    if(num < 1) {
+        CriticalMsgBox box(this, tr("数量不能为空，请重新输入！\n"));
+        return false;
+    }
+
     QuMsgBox box(this, tr("请确认是否批量生成？"));
     return box.Exec();
 }
@@ -68,6 +76,8 @@ void CreateMacListWid::saveLogSlot()
         item.mac = mList.at(i).mac;
         DbMacs::bulid()->insertItem(item);
     }
+
+    QTimer::singleShot(rand()%50,this,SLOT(on_exportBtn_clicked()));
 }
 
 void CreateMacListWid::revokeLogSlot()
@@ -132,6 +142,8 @@ void CreateMacListWid::on_exportBtn_clicked()
         dlg.init(fn, list);
         dlg.exec();
 
+        ui->nameEdit->clear();
+        ui->spinBox->setValue(0);
     } else {
         CriticalMsgBox box(this, tr("没有数据无法导出！\n"));
     }
