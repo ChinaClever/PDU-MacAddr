@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include <QMessageBox>
 #include <QApplication>
-#include "QtSingleApplication.h"
+#include "qtsingleapplication.h"
 
 int main(int argc, char *argv[])
 {

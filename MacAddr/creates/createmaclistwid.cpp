@@ -1,3 +1,8 @@
+/*
+ *
+ *  Created on: 2019年10月1日
+ *      Author: Lzy
+ */
 #include "createmaclistwid.h"
 #include "ui_createmaclistwid.h"
 #include "sqlexportdlg.h"
@@ -20,6 +25,7 @@ CreateMacListWid::~CreateMacListWid()
 
 void CreateMacListWid::setWid(sMacUnit *unit)
 {
+    ui->macEdit->setText(unit->mac);
     ui->startEdit->setText(unit->start);
     ui->endEdit->setText(unit->end);
     MacAddr::bulid()->macHasCounts(*unit);
