@@ -24,7 +24,10 @@ void SettingWid::initWid()
 {
     groupBox_background_icon(this);
     on_typeBox_currentIndexChanged(0);
-    ui->groupBox->setEnabled(false);
+    ui->groupBox_1->setEnabled(false);
+    ui->groupBox_2->setEnabled(false);
+    ui->pwdEdit->setText(mUnit->pwd);
+    ui->passwordEdit->setText(mUnit->pwd);
 }
 
 
@@ -55,7 +58,7 @@ bool SettingWid::authorityVerification()
     bool ok, ret = false;
     QString text = QInputDialog::getText(this,tr("口令验证"),tr("请输入管理员密码"), QLineEdit::Password,NULL,&ok);
     if(ok && !text.isEmpty()) {
-        if(text == "123456") ret = true;
+        if(text == mUnit->pwd) ret = true;
     }
 
     return ret;
@@ -91,6 +94,17 @@ bool SettingWid::inputCheck()
         return false;
     }
 
+    QString pwd = ui->pwdEdit->text();
+    if(pwd.isEmpty()) {
+        CriticalMsgBox box(this, tr("授权密码不能为空，请重新输入！\n"));
+        return false;
+    } else if(pwd == ui->passwordEdit->text()) {
+        mUnit->pwd = pwd;
+    } else {
+        CriticalMsgBox box(this, tr("二次密码输入不一致，请重新输入！\n"));
+        return false;
+    }
+
     return true;
 }
 
@@ -102,24 +116,26 @@ void SettingWid::saveLog(sMacUnit *unit)
 
 void SettingWid::on_btn_clicked()
 {
+    bool en = false;
     static int isRun = 0;
     if(isRun % 2) {
         if(inputCheck()) {
             isRun++;
             saveLog(mUnit);
             ui->btn->setText(tr("修改"));
-            ui->groupBox->setEnabled(false);
         }
     } else {
         bool ret = authorityVerification();
         if(ret) {
             isRun++;
+            en = true;
             ui->btn->setText(tr("保存"));
-            ui->groupBox->setEnabled(true);
         } else {
             CriticalMsgBox box(this, tr("身份验证错误\n"));
         }
     }
+    ui->groupBox_1->setEnabled(en);
+    ui->groupBox_2->setEnabled(en);
 }
 
 void SettingWid::on_readMeBtn_clicked()

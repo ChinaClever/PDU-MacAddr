@@ -55,6 +55,9 @@ void ConfigBase::setMacUnit(sMacUnit *unit)
 
     str = QString("end");
     com_cfg_write(str, unit->end, prefix);
+
+    com_cfg_write("pwd", unit->pwd, "Sys");
+    com_cfg_write("dir", unit->dir, "Sys");
 }
 
 
@@ -71,5 +74,11 @@ void ConfigBase::getMacUnit(sMacUnit *unit)
 
     str = QString("end");
     res = com_cfg_readStr(str, prefix);
-    if(!res.isEmpty()) unit->end = res;    
+    if(!res.isEmpty()) unit->end = res;
+
+    res = com_cfg_readStr("pwd", "Sys");
+    if(!res.isEmpty()) unit->pwd = res;
+
+    res = com_cfg_readStr("dir", "Sys");
+    if(!res.isEmpty()) unit->dir = res;
 }

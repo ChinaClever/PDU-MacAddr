@@ -7,7 +7,7 @@
  */
 #include "sqlexportdlg.h"
 #include "ui_sqlexportdlg.h"
-static QString g_dir = "D:";
+#include "datapacket.h"
 
 SqlExportDlg::SqlExportDlg(QWidget *parent) :
     QDialog(parent),
@@ -17,9 +17,10 @@ SqlExportDlg::SqlExportDlg(QWidget *parent) :
     groupBox_background_icon(this);
     this->setWindowTitle(tr("日志导出"));
     mExportThread = new Excel_SaveThread(this);
-
     timer = new QTimer(this);
     connect( timer, SIGNAL(timeout()),this, SLOT(timeoutDone()));
+    ui->quitBtn->setHidden(true);
+    mDir = sDataPacket::bulid()->mac->dir;
 }
 
 SqlExportDlg::~SqlExportDlg()
@@ -35,7 +36,7 @@ void SqlExportDlg::init(const QString &title, QList<QStringList> &list)
     ui->progressBar->setValue(0);
     ui->titleLab->setText(fn);
     ui->fileEdit->setText(fn);
-    ui->pathEdit->setText(g_dir);
+    ui->pathEdit->setText(mDir);
 }
 
 /**
@@ -45,11 +46,12 @@ void SqlExportDlg::on_pushButton_clicked()
 {
     QFileDialog dlg(this,tr("路径选择"));
     dlg.setFileMode(QFileDialog::DirectoryOnly);
-    dlg.setDirectory(g_dir);
+    dlg.setDirectory(mDir);
     if(dlg.exec() == QDialog::Accepted) {
         QString fn = dlg.selectedFiles().at(0);
         if(fn.right(1) != "/")  fn += "/";
-        ui->pathEdit->setText(fn); g_dir = fn;
+        ui->pathEdit->setText(fn); mDir = fn;
+        sDataPacket::bulid()->mac->dir = mDir;
     }
 }
 
@@ -92,7 +94,7 @@ void SqlExportDlg::exportDone()
     ui->exportBtn->setEnabled(true);
     ui->quitBtn->setEnabled(true);
 //    InfoMsgBox box(this, tr("\n导出完成!!\n"));
-    QDesktopServices::openUrl(QUrl("file:///"+g_dir, QUrl::TolerantMode));
+    QDesktopServices::openUrl(QUrl("file:///"+mDir, QUrl::TolerantMode));
     this->close();
 }
 
