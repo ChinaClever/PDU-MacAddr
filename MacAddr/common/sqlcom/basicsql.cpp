@@ -307,9 +307,6 @@ QSqlDatabase BasicSql::initDb()
         }
     }
     return db;
-
-
-    return db;
 }
 
 
