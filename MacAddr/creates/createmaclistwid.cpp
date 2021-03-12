@@ -119,14 +119,15 @@ void CreateMacListWid::on_exportBtn_clicked()
     if(mList.size()) {
         SqlExportDlg dlg(this);
         QList<QStringList> list; // 内容
+        QString user = ui->nameEdit->text();
+        QString dev = ui->typeBox->currentText();
         for(int i=0; i<mList.size(); ++i) {
             QStringList strs;
-            strs << QString::number(i+1) << mList.at(i).mac;
+            strs << QString::number(i+1) << user << dev << mList.at(i).mac;
             list << strs;
         }
 
-        QString str = ui->nameEdit->text();
-        QString fn = str + "_" + ui->typeBox->currentText();
+        QString fn = user + "_" + dev;
         dlg.init(fn, list);
         dlg.exec();
 
