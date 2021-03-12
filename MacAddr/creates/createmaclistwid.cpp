@@ -127,7 +127,8 @@ void CreateMacListWid::on_exportBtn_clicked()
             list << strs;
         }
 
-        QString fn = user + "_" + dev;
+        QString date = QDate::currentDate().toString("yyyy-MM-dd");
+        QString fn = user + "_" + dev + "_" + date;
         dlg.init(fn, list);
         dlg.exec();
 
