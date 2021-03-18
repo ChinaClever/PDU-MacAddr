@@ -19,7 +19,7 @@ QString cm_pathOfData(const QString& name)
 {
     QDir dataDir(QDir::home());
     //QDir dataDir(QDir::current());
-    QString dirName = ".macaddr";
+    QString dirName = ".PDU-MacAddr";
     if(!dataDir.exists(dirName))
         dataDir.mkdir(dirName);
     dataDir.cd(dirName);
