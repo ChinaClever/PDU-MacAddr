@@ -53,6 +53,11 @@ bool CreateMacListWid::inputCheck()
         return false;
     }
 
+    if(mUnit->counts) {
+        CriticalMsgBox box(this, tr("MAC地址已用完，无法继续使用！\n"));
+        return false;
+    }
+
     uint num = ui->spinBox->value();
     if(num < 1) {
         CriticalMsgBox box(this, tr("数量不能为空，请重新输入！\n"));
