@@ -36,6 +36,7 @@ void SettingWid::setWid(sMacUnit *unit)
     ui->macEdit->setText(unit->mac);
     ui->startEdit->setText(unit->start);
     ui->endEdit->setText(unit->end);
+    ui->spinBox->setValue(unit->cnt);
 
     MacAddr::bulid()->macHasCounts(*unit);
     ui->countEdit->setText(QString::number(unit->counts));
@@ -48,7 +49,6 @@ void SettingWid::setWid(sMacUnit *unit)
 void SettingWid::on_typeBox_currentIndexChanged(int)
 {
     sMacUnit *unit = sDataPacket::bulid()->mac;
-    unit->name = ui->typeBox->currentText();
     setWid(unit);
     mUnit = unit;
 }
@@ -94,6 +94,7 @@ bool SettingWid::inputCheck()
         return false;
     }
 
+    mUnit->cnt = ui->spinBox->value();
     QString pwd = ui->pwdEdit->text();
     if(pwd.isEmpty()) {
         CriticalMsgBox box(this, tr("授权密码不能为空，请重新输入！\n"));

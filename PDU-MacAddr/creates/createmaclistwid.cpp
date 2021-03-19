@@ -53,10 +53,18 @@ bool CreateMacListWid::inputCheck()
         return false;
     }
 
-    int num = ui->spinBox->value();
+    uint num = ui->spinBox->value();
     if(num < 1) {
         CriticalMsgBox box(this, tr("数量不能为空，请重新输入！\n"));
         return false;
+    } else if(num > mUnit->counts) {
+        CriticalMsgBox box(this, tr("没有这么多MAC，最多为：%1，请重新输入！\n").arg(mUnit->counts));
+        return false;
+    }
+
+    if(mUnit->counts < mUnit->cnt) {
+        QString str = tr("剩余MAC地址，仅有%1个，请向领导反馈").arg(mUnit->counts);
+        InfoMsgBox box(this, str);
     }
 
     QuMsgBox box(this, tr("请确认是否批量生成？"));

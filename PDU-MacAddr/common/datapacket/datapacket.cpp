@@ -25,6 +25,7 @@ void sDataPacket::initMac()
 {
     sMacUnit *unit = mac;
     unit->id = 0;
+    unit->cnt = 100;
     unit->name = "IP-PDU";
     unit->start += "30:00:00";
     unit->mac += "30:00:00";
