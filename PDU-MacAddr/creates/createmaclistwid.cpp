@@ -53,7 +53,7 @@ bool CreateMacListWid::inputCheck()
         return false;
     }
 
-    if(mUnit->counts) {
+    if(mUnit->counts < 1) {
         CriticalMsgBox box(this, tr("MAC地址已用完，无法继续使用！\n"));
         return false;
     }
