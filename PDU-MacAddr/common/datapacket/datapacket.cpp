@@ -25,10 +25,11 @@ void sDataPacket::initMac()
 {
     sMacUnit *unit = mac;
     unit->id = 0;
+    unit->cnt = 100;
     unit->name = "IP-PDU";
     unit->start += "30:00:00";
     unit->mac += "30:00:00";
-    unit->end += "3F:FF:FF";
+    unit->end += "30:00:00";
     unit->pwd = "123456";
     unit->dir = "D:";
     ConfigBase::bulid()->getMacUnit(unit);
