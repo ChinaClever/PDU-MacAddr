@@ -35,7 +35,7 @@
       </font>
      </property>
      <property name="title">
-      <string>MAC地址纪录</string>
+      <string>MAC地址记录</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <property name="leftMargin">

@@ -35,7 +35,45 @@
       <string>规则设置</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="2" column="3">
+      <item row="2" column="1">
+       <widget class="QPushButton" name="readMeBtn">
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>200</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>说 明</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="7">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>139</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="6">
        <widget class="QPushButton" name="btn">
         <property name="minimumSize">
          <size>
@@ -60,33 +98,20 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <spacer name="horizontalSpacer">
+      <item row="2" column="5">
+       <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>140</width>
+          <width>221</width>
           <height>20</height>
          </size>
         </property>
        </spacer>
       </item>
-      <item row="2" column="4">
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>139</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="0" colspan="5">
+      <item row="1" column="0" colspan="8">
        <widget class="QGroupBox" name="groupBox_2">
         <property name="maximumSize">
          <size>
@@ -275,20 +300,20 @@
         </layout>
        </widget>
       </item>
-      <item row="2" column="2">
-       <spacer name="horizontalSpacer_2">
+      <item row="2" column="0">
+       <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>221</width>
+          <width>140</width>
           <height>20</height>
          </size>
         </property>
        </spacer>
       </item>
-      <item row="0" column="0" colspan="5">
+      <item row="0" column="0" colspan="8">
        <widget class="QGroupBox" name="groupBox_1">
         <property name="maximumSize">
          <size>
@@ -373,28 +398,27 @@
         </layout>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QPushButton" name="readMeBtn">
-        <property name="minimumSize">
+      <item row="2" column="2">
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
          <size>
-          <width>160</width>
-          <height>40</height>
+          <width>140</width>
+          <height>20</height>
          </size>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>200</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>微软雅黑</family>
-          <pointsize>14</pointsize>
-         </font>
+       </spacer>
+      </item>
+      <item row="2" column="3">
+       <widget class="QPushButton" name="VerBtn">
+        <property name="enabled">
+         <bool>false</bool>
         </property>
         <property name="text">
-         <string>说 明</string>
+         <string>V0.6
+2021-03-31</string>
         </property>
        </widget>
       </item>

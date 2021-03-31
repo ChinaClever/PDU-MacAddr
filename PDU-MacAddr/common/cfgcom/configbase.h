@@ -8,7 +8,7 @@ struct sConfigItem
 {
     sConfigItem() {logCount = 100*10000;}
     SerialPort *serial; // 串口对象
-    uint logCount; // 数据库最大允许的纪录条数
+    uint logCount; // 数据库最大允许的记录条数
 };
 
 class ConfigBase

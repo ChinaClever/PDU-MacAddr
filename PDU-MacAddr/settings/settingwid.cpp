@@ -28,6 +28,9 @@ void SettingWid::initWid()
     ui->groupBox_2->setEnabled(false);
     ui->pwdEdit->setText(mUnit->pwd);
     ui->passwordEdit->setText(mUnit->pwd);
+
+    QDate buildDate = QLocale(QLocale::English ).toDate( QString(__DATE__).replace("  ", " 0"), "MMM dd yyyy");
+    ui->VerBtn->setText(QString("V0.6\n%1").arg(buildDate.toString("yyyy-MM-dd")));
 }
 
 
