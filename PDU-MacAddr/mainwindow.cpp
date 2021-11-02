@@ -28,7 +28,7 @@ MainWindow::~MainWindow()
 void MainWindow::initFunSlot()
 {
     initWid();
-    navBarSlot(1);
+    navBarSlot(0);
 }
 
 void MainWindow::initWid()
