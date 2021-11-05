@@ -17,12 +17,12 @@ static QSettings *pConfigIni = NULL;
   */
 QString cm_pathOfData(const QString& name)
 {
-    QDir dataDir(QDir::home());
-    //QDir dataDir(QDir::current());
-    QString dirName = ".PDU-MacAddr";
-    if(!dataDir.exists(dirName))
-        dataDir.mkdir(dirName);
-    dataDir.cd(dirName);
+    QDir dataDir(QDir::home());  //QCoreApplication::applicationDirPath()
+    QString dirName = "." + QCoreApplication::organizationName();
+    if(!dataDir.exists(dirName)) {dataDir.mkdir(dirName);} dataDir.cd(dirName);
+
+    dirName = QCoreApplication::applicationName();
+    if(!dataDir.exists(dirName)) {dataDir.mkdir(dirName);} dataDir.cd(dirName);
     return dataDir.absoluteFilePath(name);
 }
 
@@ -36,6 +36,9 @@ bool com_cfg_open(void)
     bool ret = QFileInfo(strFilename).exists();
     if(pConfigIni==NULL) {
         pConfigIni = new QSettings(strFilename, QSettings::IniFormat);
+        QCoreApplication::setOrganizationName("CLEVER");
+        QCoreApplication::setOrganizationDomain("clever.com");
+        QCoreApplication::setApplicationName("PDU-MacAddr");
         //        pConfigIni->setIniCodec(QTextCodec::codecForName("utf-8")); // gb18030
     }
 
