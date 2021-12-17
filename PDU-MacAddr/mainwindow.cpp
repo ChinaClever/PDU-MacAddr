@@ -11,12 +11,14 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
+    ui->setupUi(this);    
+    QCoreApplication::setOrganizationName("CLEVER");
+    QCoreApplication::setOrganizationDomain("clever.com");
+    QCoreApplication::setApplicationName("PDU-MacAddr");
 
     mNavBarWid = new NavBarWid(ui->barWid);
     QTimer::singleShot(5,this,SLOT(initFunSlot())); //延时初始化
     connect(mNavBarWid, SIGNAL(navBarSig(int)), this, SLOT(navBarSlot(int)));
-
 }
 
 MainWindow::~MainWindow()

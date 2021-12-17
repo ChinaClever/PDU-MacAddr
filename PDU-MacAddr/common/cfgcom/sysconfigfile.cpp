@@ -36,10 +36,7 @@ bool com_cfg_open(void)
     bool ret = QFileInfo(strFilename).exists();
     if(pConfigIni==NULL) {
         pConfigIni = new QSettings(strFilename, QSettings::IniFormat);
-        QCoreApplication::setOrganizationName("CLEVER");
-        QCoreApplication::setOrganizationDomain("clever.com");
-        QCoreApplication::setApplicationName("PDU-MacAddr");
-        //        pConfigIni->setIniCodec(QTextCodec::codecForName("utf-8")); // gb18030
+        pConfigIni->setIniCodec(QTextCodec::codecForName("utf-8")); // gb18030
     }
 
     return ret;
